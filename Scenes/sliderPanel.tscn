@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Themes/main.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/Themes/main_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://mods/BlueberryWolfi.ReelChat/Scenes/sliderPanel.gd" type="Script" id=3]
+
+[node name="SliderPanel" type="Panel"]
+self_modulate = Color( 0.333333, 0.164706, 0, 1 )
+margin_right = 1280.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 960, 64 )
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="NameLabel" type="RichTextLabel" parent="."]
+anchor_top = 0.25
+anchor_right = 0.2
+anchor_bottom = 0.75
+margin_left = 24.0
+rect_min_size = Vector2( 320, 32 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+text = "INSERT NAME HERE"
+scroll_active = false
+
+[node name="HSlider" type="HSlider" parent="."]
+anchor_left = 0.3
+anchor_right = 0.85
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+max_value = 2.0
+step = 0.01
+value = 1.0
+
+[node name="LineEdit" type="LineEdit" parent="."]
+anchor_left = 0.87
+anchor_top = 0.1
+anchor_right = 0.94
+anchor_bottom = 0.9
+margin_left = 0.400024
+margin_top = 0.2
+margin_right = 7.59998
+margin_bottom = -4.2
+custom_fonts/font = ExtResource( 2 )
+text = "1.0"
+align = 1
+editable = false
+caret_blink = true
+caret_blink_speed = 0.5
+
+[connection signal="value_changed" from="HSlider" to="." method="_on_slider_value_changed"]
+[connection signal="text_entered" from="LineEdit" to="." method="_on_text_entered"]
